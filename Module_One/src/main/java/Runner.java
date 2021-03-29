@@ -1,5 +1,3 @@
-import logger.SLF4JLogger;
-
 import static search.Search.binarySearch;
 
 public class Runner {
@@ -10,8 +8,9 @@ public class Runner {
                 30, 31, 32, 33, 34, 35, 36, 37, 38, 39,
                 40, 41, 42, 43, 44, 45, 46, 47, 48, 49};
 
-        System.out.println(binarySearch(array, 0, array.length, 0));
-        System.out.println(binarySearch(array, 0, array.length, 12));
-        System.out.println(binarySearch(array, 0, array.length, 49));
+        System.out.println(binarySearch(array, 0));
+        System.out.println(binarySearch(array, 12));
+        System.out.println(binarySearch(array, 49));
+        System.out.println(binarySearch(array, 55));
     }
 }

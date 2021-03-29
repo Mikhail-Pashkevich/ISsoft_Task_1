@@ -1,28 +1,31 @@
 package search;
 
-import logger.SLF4JLogger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Search {
-    private static final SLF4JLogger log = new SLF4JLogger();
+    private static final Logger log = LoggerFactory.getLogger(Search.class);
 
-    public static int binarySearch(int[] array, int low, int high, int key) {
+
+    public static int binarySearch(int[] array, int key) {
+        return binarySearch(array, 0, array.length - 1, key);
+    }
+
+    private static int binarySearch(int[] array, int low, int high, int key) {
         log.debug("low = " + low + " high = " + high);
 
-        if (low >= high) {
-            log.error("no such key exists");
-            throw new IllegalArgumentException("no such key exists");
+        if (low > high) {
+            return -1;
         }
 
-        int middle = (low + high) / 2;
+        int middle = (int) (((long) low + (long) high) / 2);
 
         if (key < array[middle]) {
             return binarySearch(array, low, middle - 1, key);
-        } else {
-            if (key > array[middle]) {
-                return binarySearch(array, middle + 1, high, key);
-            }
         }
-
+        if (key > array[middle]) {
+            return binarySearch(array, middle + 1, high, key);
+        }
         return middle;
     }
 }
