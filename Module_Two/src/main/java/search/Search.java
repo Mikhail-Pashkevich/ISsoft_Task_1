@@ -18,7 +18,7 @@ public class Search {
             return -1;
         }
 
-        int middle = (int) (((long) low + (long) high) / 2);
+        int middle = low + (high - low) / 2;
 
         if (key < array[middle]) {
             return binarySearch(array, low, middle - 1, key);
